@@ -1,5 +1,4 @@
 name: Unpack ImageFS and Save Artifacts
-
 on: [push, pull_request]  # 触发条件，可以是 push 或 pull_request
 
 jobs:
@@ -7,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest  # 运行在最新的 Ubuntu 虚拟机上
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2  # 检出代码仓库
+      uses: actions/checkout@v4  # 假设已经有v4版本且使用方式与v2类似，此处需根据实际情况调整
 
     - name: Create target directory
       run: |
@@ -20,7 +19,7 @@ jobs:
         tar -xvf imagefs.txz -C /aaa  # 解压到 /aaa 目录
 
     - name: Upload unpacked files as artifacts
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: imagefs-unpacked
         path: /aaa  # 指定要上传的目录
